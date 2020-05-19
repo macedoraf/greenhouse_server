@@ -1,23 +1,19 @@
-const express = require('express');
+const express = require("express");
 const routes = express.Router();
-const FakeEstufa = require('../console/mockSchedule');
+const FakeEstufa = require("../console/mockSchedule");
 
-routes.get('/', (req, res) => {
-    if(req.query == undefined){
-        return res.send("Send params")
-    }
-    
-    var on = req.query.id
-    if(on == 1){
-        FakeEstufa.start();
-        return res.send("Simulador ligado");
-    }else if(on == 0){
-        FakeEstufa.stop();
-        return res.send("Simulador desligado");
-    }else{
-        return res.send("Painel de controle")
-    }
-    
-})
+routes.get("/on", (req, res) => {
+  FakeEstufa.start();
+  return res.send("Simulador ligado");
+});
+
+routes.get("/off", (req, res) => {
+  FakeEstufa.stop();
+  return res.send("Simulador desligado");
+});
+
+routes.get("/", (req, res) => {
+    return res.send("Olá ! ")
+});
 
 module.exports = routes;
