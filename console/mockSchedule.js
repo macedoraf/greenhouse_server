@@ -6,7 +6,7 @@ const dateFormat = require('dateformat')
 module.exports = {
   async start() {
     console.log("STARTING SERVICE STATE");
-    schedule = cron.schedule("* * * * * * *", () => {
+    schedule = cron.schedule("* * * * * * * *", () => {
       this.sendFakeStateToRepository();
     });
   },
